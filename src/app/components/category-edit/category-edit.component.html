@@ -1,0 +1,27 @@
+<app-header [headerData]="headerData"></app-header>
+
+<div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
+    <div fxFlex="50%" fxFlex.lt-md="100%" style="padding-top: 30px;">
+        <form #catForm="ngForm" novalidate>
+
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Category Name:" [(ngModel)]="category.category" name="catgory" required>
+            </mat-form-field>
+
+      
+            <mat-form-field class="full-width">
+              <textarea matInput placeholder="Description:" [(ngModel)]="category.description" name="description"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Parent Category:" [(ngModel)]="category.parent_id" name="parent_id" required>
+            </mat-form-field>
+      
+      
+            <button mat-raised-button (click)="saveCategory(category)" [disabled]="catForm.invalid" color="primary">Save</button>
+      
+        </form>
+    
+    </div>
+   
+</div>

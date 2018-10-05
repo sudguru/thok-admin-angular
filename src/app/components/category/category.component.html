@@ -1,0 +1,19 @@
+<app-header [headerData]="headerData"></app-header>
+<button mat-fab color="primary" class="fabbtn" (click)="addEdit(newCategory)">
+  <mat-icon>add</mat-icon>
+</button>
+<div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
+    <div fxFlex="50%" fxFlex.lt-md="100%">
+        <mat-list>
+            <mat-list-item *ngFor="let category of categories" (click)="addEdit(category)" style="cursor:default">
+              <mat-icon matListIcon>folder</mat-icon>
+              <h3 matLine> {{category.category}} </h3>
+              <p matLine>
+                <span> {{category.parent_id}} </span>
+              </p>
+            </mat-list-item>
+          </mat-list>
+    
+    </div>
+   
+</div>

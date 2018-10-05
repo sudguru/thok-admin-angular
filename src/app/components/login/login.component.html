@@ -1,0 +1,32 @@
+<mat-toolbar color="accent" class='toolbar-login' style="height: 50px;">
+  <span class="text-left flex-1">
+    <span style="font-weight: 400; font-size: 16px; color: #333;">
+      Login
+    </span>
+
+  </span> 
+  <span class='toolbar-login-logo'>
+    <mat-icon style="margin: 4px 10px 0 0">nfc</mat-icon>
+    <span style="font-weight: 400; font-size: 18px;">Thoksaman Admin</span>
+  </span>
+  <span class="flex-1 text-right">
+    <button mat-button (click)="help()" color="primary">Help</button>
+  </span>
+</mat-toolbar>
+<div class="loginform">
+  <form #loginForm="ngForm" novalidate>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email:" [(ngModel)]="loginUser.username" name="username" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input type="password" matInput placeholder="Password:" [(ngModel)]="loginUser.password" name="password" required>
+      </mat-form-field>
+
+
+      <button mat-raised-button (click)="login(loginUser)" [disabled]="loginForm.invalid" color="primary">Login</button>
+
+  </form>
+
+</div>
