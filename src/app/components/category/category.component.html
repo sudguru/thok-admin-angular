@@ -4,15 +4,20 @@
 </button>
 <div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
     <div fxFlex="50%" fxFlex.lt-md="100%">
-        <mat-list>
-            <mat-list-item *ngFor="let category of categories" (click)="addEdit(category)" style="cursor:default">
-              <mat-icon matListIcon>folder</mat-icon>
-              <h3 matLine> {{category.category}} </h3>
-              <p matLine>
-                <span> {{category.parent_id}} </span>
-              </p>
-            </mat-list-item>
-          </mat-list>
+        <mat-list dense>
+            <ng-container *ngFor="let category of categories">
+                <mat-list-item (click)="addEdit(category)" style="cursor:default">
+                    <mat-icon matListIcon>folder</mat-icon>
+                    <h3 matLine> {{category.category}} </h3>
+                </mat-list-item>
+              <ng-container *ngIf="category.children">
+                  <mat-list-item *ngFor="let child of category.children" (click)="addEdit(child)" style="cursor:default">
+                      <mat-icon matListIcon style="margin-left: 30px">folder</mat-icon>
+                      <h3 matLine> {{child.category}} </h3>
+                  </mat-list-item>
+              </ng-container>
+            </ng-container>
+        </mat-list>
     
     </div>
    

@@ -1,0 +1,41 @@
+<app-header [headerData]="headerData"></app-header>
+
+<div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
+  <div fxFlex="50%" fxFlex.lt-md="100%" style="padding-top: 30px;" *ngIf="setting">
+    <form #settingForm="ngForm" novalidate>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Site Name:" [(ngModel)]="setting.site_name" name="site_name" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Phone 1:" [(ngModel)]="setting.phone1" name="phone1" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Phone 2:" [(ngModel)]="setting.phone2" name="phone2" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Address:" [(ngModel)]="setting.address" name="address" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email:" [(ngModel)]="setting.email" name="email" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Order Email:" [(ngModel)]="setting.order_email" name="order_email" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Short Description:" [(ngModel)]="setting.description" name="description" required>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <button fxFlex="1" mat-raised-button (click)="saveSetting(setting)" [disabled]="settingForm.invalid" color="primary">Save</button>
+      </div>
+    </form>
+
+
+  </div>
+
+</div>

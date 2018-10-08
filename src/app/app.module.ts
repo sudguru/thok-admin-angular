@@ -16,6 +16,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 import { CategoryComponent } from './components/category/category.component';
 import { CategoryEditComponent } from './components/category-edit/category-edit.component';
+import { PaymentmethodComponent } from './components/paymentmethod/paymentmethod.component';
+import { PaymentmethodEditComponent } from './components/paymentmethod-edit/paymentmethod-edit.component';
+import { SettingComponent } from './components/setting/setting.component';
+import { ContentComponent } from './components/content/content.component';
+import { ContentEditComponent } from './components/content-edit/content-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,11 @@ import { CategoryEditComponent } from './components/category-edit/category-edit.
     HeaderComponent,
     CategoryComponent,
     CategoryEditComponent,
+    PaymentmethodComponent,
+    PaymentmethodEditComponent,
+    SettingComponent,
+    ContentComponent,
+    ContentEditComponent,
   ],
   imports: [
     BrowserModule,

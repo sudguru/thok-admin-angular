@@ -21,6 +21,13 @@ export class CategoryService {
       }));
   }
 
+  getRootCategories() {
+    return this.http.get<ServerResponse>(`${environment.apiUrl}/admin/rootcategories`)
+      .pipe(map(res => {
+          return res.data;
+      }));
+  }
+
   getCategory(id: number) {
     return this.http.get<ServerResponse>(`${environment.apiUrl}/admin/category/${id}`)
       .pipe(map(res => {
@@ -29,8 +36,31 @@ export class CategoryService {
   }
 
   saveCategory(category: Category) {
-    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/category`, {category})
+    if (category.id === 0) {
+      return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/category`, {category})
+        .pipe(map(res => {
+          return res;
+        }));
+    } else {
+      return this.http.put<ServerResponse>(`${environment.apiUrl}/admin/category`, {category})
+        .pipe(map(res => {
+          return res;
+        }));
+    }
+  }
+
+  deleteCategory(category: Category) {
+    return this.http.delete<ServerResponse>(`${environment.apiUrl}/admin/category/${category.id}`)
+      .pipe(map(res => {
+        return res;
+      }));
+  }
+
+  uploadImage(id: number, dataurl: string | ArrayBuffer, filename: string) {
+    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/uploadphoto`,
+    { id: id, myFile: dataurl, filename: filename, secret: 'SudeepsSecret'})
     .pipe(map(res => {
+      console.log(res);
       return res;
     }));
   }

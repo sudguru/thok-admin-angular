@@ -13,14 +13,26 @@
               <textarea matInput placeholder="Description:" [(ngModel)]="category.description" name="description"></textarea>
             </mat-form-field>
 
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Parent Category:" [(ngModel)]="category.parent_id" name="parent_id" required>
+            <mat-form-field class="full-width" *ngIf="rootCategories">
+                <mat-select [(value)]="category.parent_id">
+                  <mat-option value="0">None</mat-option>
+                  <mat-option *ngFor="let cat of rootCategories" [value]="cat.id">{{cat.category}}</mat-option>
+                </mat-select>
             </mat-form-field>
       
-      
-            <button mat-raised-button (click)="saveCategory(category)" [disabled]="catForm.invalid" color="primary">Save</button>
-      
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <button fxFlex="1" mat-raised-button (click)="saveCategory(category)" [disabled]="catForm.invalid" color="primary">Save</button>
+                <div fxFlex="auto"></div>
+                <button fxFlex="1" mat-raised-button (click)="deleteCategory(category)" [disabled]="catForm.invalid" color="warn">Delete</button>
+            </div>
         </form>
+
+        <div style="margin-top: 30px" *ngIf="category.id > 0">
+            <button mat-button (click)="chooseFile()" [disabled]="catForm.invalid" color="warn">Category Banner (Change)</button>
+            <img *ngIf="!category.banner" src="./assets/nobanner.jpg" style="width: 100%">
+            <img *ngIf="category.banner" [src]="imagePath+category.banner" style="width: 100%">
+        </div>
+        <input type="file" id="myFile" name="myFile" style="display: none" (change)="prepareFile($event, category.id)"  />
     
     </div>
    

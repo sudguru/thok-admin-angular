@@ -1,0 +1,18 @@
+<app-header [headerData]="headerData"></app-header>
+<button mat-fab color="primary" class="fabbtn" (click)="addEdit(newContent)">
+  <mat-icon>add</mat-icon>
+</button>
+<div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
+    <div fxFlex="50%" fxFlex.lt-md="100%">
+        <mat-list dense>
+            <ng-container *ngFor="let content of contents">
+                <mat-list-item (click)="addEdit(content)" style="cursor:default">
+                    <mat-icon matListIcon>folder</mat-icon>
+                    <h3 matLine> {{content.title}} </h3>
+                </mat-list-item>
+            </ng-container>
+        </mat-list>
+    
+    </div>
+   
+</div>

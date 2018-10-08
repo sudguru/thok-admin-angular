@@ -1,3 +1,7 @@
+import { ContentEditComponent } from './components/content-edit/content-edit.component';
+import { ContentComponent } from './components/content/content.component';
+import { SettingComponent } from './components/setting/setting.component';
+import { PaymentmethodEditComponent } from './components/paymentmethod-edit/paymentmethod-edit.component';
 import { CategoryEditComponent } from './components/category-edit/category-edit.component';
 import { CategoryComponent } from './components/category/category.component';
 // import { ProductComponent } from './components/product/product.component';
@@ -7,6 +11,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guards';
+import { PaymentmethodComponent } from './components/paymentmethod/paymentmethod.component';
 
 const routes: Routes = [
     {
@@ -27,6 +32,31 @@ const routes: Routes = [
     {
         path: 'category/:category',
         component: CategoryEditComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'paymentmethods',
+        component: PaymentmethodComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'paymentmethod/:paymentmethod',
+        component: PaymentmethodEditComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'contents',
+        component: ContentComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'content/:content',
+        component: ContentEditComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'settings',
+        component: SettingComponent,
         canActivate: [AuthGuard]
     },
     { path: 'login', component: LoginComponent },

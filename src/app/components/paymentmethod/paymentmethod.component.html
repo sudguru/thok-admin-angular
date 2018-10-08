@@ -1,0 +1,18 @@
+<app-header [headerData]="headerData"></app-header>
+<button mat-fab color="primary" class="fabbtn" (click)="addEdit(newPaymentmethod)">
+  <mat-icon>add</mat-icon>
+</button>
+<div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
+    <div fxFlex="50%" fxFlex.lt-md="100%">
+        <mat-list dense>
+            <ng-container *ngFor="let paymentmethod of paymentmethods">
+                <mat-list-item (click)="addEdit(paymentmethod)" style="cursor:default">
+                    <mat-icon matListIcon>folder</mat-icon>
+                    <h3 matLine> {{paymentmethod.payment_method}} </h3>
+                </mat-list-item>
+            </ng-container>
+        </mat-list>
+    
+    </div>
+   
+</div>
