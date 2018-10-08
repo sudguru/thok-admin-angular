@@ -1,3 +1,7 @@
+import { ListEditComponent } from './components/list-edit/list-edit.component';
+import { ListComponent } from './components/list/list.component';
+import { BannerEditComponent } from './components/banner-edit/banner-edit.component';
+import { BannerComponent } from './components/banner/banner.component';
 import { ContentEditComponent } from './components/content-edit/content-edit.component';
 import { ContentComponent } from './components/content/content.component';
 import { SettingComponent } from './components/setting/setting.component';
@@ -52,6 +56,26 @@ const routes: Routes = [
     {
         path: 'content/:content',
         component: ContentEditComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'banners',
+        component: BannerComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'banner/:banner',
+        component: BannerEditComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'lists',
+        component: ListComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'list/:list',
+        component: ListEditComponent,
         canActivate: [AuthGuard]
     },
     {

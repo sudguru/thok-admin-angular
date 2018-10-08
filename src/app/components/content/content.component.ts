@@ -24,13 +24,13 @@ export class ContentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.setNewCategory();
+    this.setNewContent();
     this.contentService.getContents().subscribe(res => {
       this.contents = res;
     });
   }
 
-  setNewCategory() {
+  setNewContent() {
     this.newContent = {
       id: 0,
       title: '',

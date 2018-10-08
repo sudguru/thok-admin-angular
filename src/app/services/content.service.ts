@@ -16,6 +16,7 @@ export class ContentService {
   getContents() {
     return this.http.get<ServerResponse>(`${environment.apiUrl}/admin/contents`)
       .pipe(map(res => {
+          console.log(res);
           return res.data;
       }));
   }
@@ -43,7 +44,7 @@ export class ContentService {
   }
 
   deleteContent(content: Content) {
-    return this.http.delete<ServerResponse>(`${environment.apiUrl}/admin/paymentmethod/${content.id}`)
+    return this.http.delete<ServerResponse>(`${environment.apiUrl}/admin/content/${content.id}`)
       .pipe(map(res => {
         return res;
       }));

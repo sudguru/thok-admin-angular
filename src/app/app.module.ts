@@ -22,6 +22,12 @@ import { SettingComponent } from './components/setting/setting.component';
 import { ContentComponent } from './components/content/content.component';
 import { ContentEditComponent } from './components/content-edit/content-edit.component';
 
+import { QuillModule } from 'ngx-quill';
+import { BannerComponent } from './components/banner/banner.component';
+import { BannerEditComponent } from './components/banner-edit/banner-edit.component';
+import { ListEditComponent } from './components/list-edit/list-edit.component';
+import { ListComponent } from './components/list/list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +41,10 @@ import { ContentEditComponent } from './components/content-edit/content-edit.com
     SettingComponent,
     ContentComponent,
     ContentEditComponent,
+    BannerComponent,
+    BannerEditComponent,
+    ListEditComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +53,8 @@ import { ContentEditComponent } from './components/content-edit/content-edit.com
     MaterialModule,
     FormsModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    QuillModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

@@ -54,4 +54,12 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/contents']);
   }
 
+  banners() {
+    this.router.navigate(['/banners']);
+  }
+
+  lists() {
+    this.router.navigate(['/lists']);
+  }
+
 }
