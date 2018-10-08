@@ -14,7 +14,7 @@
             </mat-form-field>
 
             <mat-form-field class="full-width" *ngIf="rootCategories">
-                <mat-select [(value)]="category.parent_id">
+                <mat-select [(value)]="category.parent_id" placeholder="Select Parent Category">
                   <mat-option value="0">None</mat-option>
                   <mat-option *ngFor="let cat of rootCategories" [value]="cat.id">{{cat.category}}</mat-option>
                 </mat-select>

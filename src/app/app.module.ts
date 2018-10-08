@@ -23,6 +23,8 @@ import { ContentComponent } from './components/content/content.component';
 import { ContentEditComponent } from './components/content-edit/content-edit.component';
 
 import { QuillModule } from 'ngx-quill';
+import { SortablejsModule } from 'angular-sortablejs';
+
 import { BannerComponent } from './components/banner/banner.component';
 import { BannerEditComponent } from './components/banner-edit/banner-edit.component';
 import { ListEditComponent } from './components/list-edit/list-edit.component';
@@ -54,7 +56,8 @@ import { ListComponent } from './components/list/list.component';
     FormsModule,
     HttpClientModule,
     FlexLayoutModule,
-    QuillModule
+    QuillModule,
+    SortablejsModule.forRoot({ animation: 150 }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

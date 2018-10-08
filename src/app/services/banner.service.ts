@@ -29,18 +29,11 @@ export class BannerService {
       }));
   }
 
-  saveBanner(banner: Banner) {
-    if (banner.id === 0) {
-      return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/banner`, {banner})
-        .pipe(map(res => {
-          return res;
-        }));
-    } else {
-      return this.http.put<ServerResponse>(`${environment.apiUrl}/admin/banner`, {banner})
-        .pipe(map(res => {
-          return res;
-        }));
-    }
+  updateBanner(banner: Banner) {
+    return this.http.put<ServerResponse>(`${environment.apiUrl}/admin/banner`, {banner})
+      .pipe(map(res => {
+        return res;
+      }));
   }
 
   deleteBanner(banner: Banner) {
@@ -50,9 +43,9 @@ export class BannerService {
       }));
   }
 
-  uploadImage(id: number, dataurl: string | ArrayBuffer, filename: string) {
-    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/uploadphoto`,
-    { id: id, myFile: dataurl, filename: filename, secret: 'SudeepsSecret'})
+  uploadImageAndAddRecord(dataurl: string | ArrayBuffer, filename: string, position: string) {
+    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/uploadbanner`,
+    {myFile: dataurl, filename: filename, secret: 'SudeepsSecret', position: position})
     .pipe(map(res => {
       console.log(res);
       return res;

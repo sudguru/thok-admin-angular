@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
+  homeMains = [];
+  homeSubMains = [];
+  optionsHome: {};
 
   headerData: any = {
     title: 'Banners',
@@ -16,16 +19,24 @@ export class BannerComponent implements OnInit {
     edit: true
   };
   newBanner: Banner;
-  banneres: Banner[];
+  banners: Banner[];
   constructor(
     private bannerService: BannerService,
     private router: Router
-  ) { }
+  ) {
+    this.optionsHome = {
+      onUpdate: (event: any) => {
+        console.log(this.homeMains);
+      }
+    };
+  }
 
   ngOnInit() {
     this.setNewBanner();
     this.bannerService.getBanners().subscribe(res => {
-      this.banneres = this.list_to_tree(res);
+      this.banners = res;
+      this.homeMains = this.banners.filter(r => r.position === 'Home Main');
+      this.homeSubMains = this.banners.filter(r => r.position === 'Home Sub Main');
     });
   }
 
