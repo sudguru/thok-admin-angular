@@ -5,6 +5,12 @@
         <form #catForm="ngForm" novalidate>
 
             <mat-form-field class="full-width">
+                <mat-select [(value)]="content.content_type" name="content_type" placeholder="Content Type" required>
+                  <mat-option *ngFor="let ct of contentTypes" [value]="ct">{{ct}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        
+            <mat-form-field class="full-width">
               <input matInput placeholder="Title:" [(ngModel)]="content.title" name="title" required>
             </mat-form-field>
 

@@ -1,44 +1,42 @@
-
-import { ContentService } from './../../services/content.service';
-import { Content } from './../../models/content.model';
+import { OutletService } from './../../services/outlet.service';
+import { Outlet } from './../../models/outlet.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-
-
 import Quill from 'quill';
 import { environment } from '../../../environments/environment';
 
-
 @Component({
-  selector: 'app-content-edit',
-  templateUrl: './content-edit.component.html',
-  styleUrls: ['./content-edit.component.css']
+  selector: 'app-outlet-edit',
+  templateUrl: './outlet-edit.component.html',
+  styleUrls: ['./outlet-edit.component.css']
 })
-export class ContentEditComponent implements OnInit {
+export class OutletEditComponent implements OnInit {
+
+
 
   modules = {};
-  content: Content;
+  outlet: Outlet;
   headerData: any = {
-    title: 'Content',
+    title: 'Outlets',
     backBtn: true,
     edit: true
   };
 
-  contentTypes = environment.contentTypes;
-
   constructor(
     private route: ActivatedRoute,
-    private contentService: ContentService,
+    private outletService: OutletService,
     private snackbar: MatSnackBar,
     private router: Router
     ) {
-    this.content = JSON.parse(this.route.snapshot.paramMap.get('content'));
-    this.content.content = this.rhtmlspecialchars(this.content.content );
-    if (this.content.id === 0) {
-      this.headerData.title = `Add New Content`;
+    this.outlet = JSON.parse(this.route.snapshot.paramMap.get('outlet'));
+    this.outlet.description = this.rhtmlspecialchars(this.outlet.description );
+    this.outlet.lat = +this.outlet.lat;
+    this.outlet.lng = +this.outlet.lng;
+    if (this.outlet.id === 0) {
+      this.headerData.title = `Add New Outlet`;
     } else {
-      this.headerData.title = `Edit: ${this.content.title}`;
+      this.headerData.title = `Edit: ${this.outlet.outlet}`;
     }
     this.modules = {
         toolbar: [
@@ -64,12 +62,12 @@ export class ContentEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveContent(content: Content) {
-    content.slug = this.slugify(content.title);
-    this.contentService.saveContent(content).subscribe(res => {
+  saveOutlet(outlet: Outlet) {
+    outlet.slug = this.slugify(outlet.outlet);
+    this.outletService.saveOutlet(outlet).subscribe(res => {
       if (!res.error) {
-        this.snackbar.open(`${content.title} Saved.`, '', { duration: 3000 });
-        this.router.navigate(['/contents']);
+        this.snackbar.open(`${outlet.outlet} Saved.`, '', { duration: 3000 });
+        this.router.navigate(['/outlets']);
       } else {
         console.log(res.error);
         this.snackbar.open(`Record could not be Saved !! `, '', { duration: 3000 });
@@ -77,11 +75,11 @@ export class ContentEditComponent implements OnInit {
     });
   }
 
-  deleteContent(content: Content) {
-    this.contentService.deleteContent(content).subscribe(res => {
+  deleteOutlet(outlet: Outlet) {
+    this.outletService.deleteOutlet(outlet).subscribe(res => {
       if (!res.error) {
         this.snackbar.open(`${res.data} record(s) Deleted.`, '', { duration: 3000 });
-        this.router.navigate(['/contents']);
+        this.router.navigate(['/outlets']);
       } else {
         this.snackbar.open(`Record could not be Deleted !! `, '', { duration: 3000 });
       }
@@ -106,5 +104,10 @@ export class ContentEditComponent implements OnInit {
      str = str.replace(/&amp;/ig, '&'); /* must do &amp; last */
      }
     return str;
+    }
+
+    chooseLocation(event) {
+      this.outlet.lat = event.coords.lat;
+      this.outlet.lng = event.coords.lng;
     }
 }

@@ -14,13 +14,14 @@ export class BannerEditComponent implements OnInit {
 
 
   banner: Banner;
+  imageDataURL: string | ArrayBuffer;
   rootCategories: Banner[];
   headerData: any = {
     title: 'Banner',
     backBtn: true,
     edit: true
   };
-  imagePath = `${environment.apiUrl}/uploads/`;
+  imagePath = `${environment.apiUrl}/uploads/banner/`;
   constructor(
     private route: ActivatedRoute,
     private bannerService: BannerService,
@@ -73,11 +74,12 @@ export class BannerEditComponent implements OnInit {
     const reader = new FileReader();
     const that = this;
     reader.onloadend = function () {
-      const imageDataURL = reader.result;
-      that.bannerService.uploadImageAndAddRecord(imageDataURL, filename, position).subscribe(res => {
+      that.imageDataURL = reader.result;
+      that.bannerService.uploadImageAndAddRecord(that.imageDataURL, filename, position).subscribe(res => {
         if (!res.error) {
           that.banner.banner = res.data;
           that.snackbar.open(`${res.data} uploaded Successfully.`, '', { duration: 3000 });
+          that.router.navigate(['/banners']);
         } else {
           that.snackbar.open(`${res.error}`, '', { duration: 3000 });
         }

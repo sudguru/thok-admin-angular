@@ -47,7 +47,14 @@ export class BannerService {
     return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/uploadbanner`,
     {myFile: dataurl, filename: filename, secret: 'SudeepsSecret', position: position})
     .pipe(map(res => {
-      console.log(res);
+      return res;
+    }));
+  }
+
+  reorderBanners(banners: Banner[]) {
+    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/reorder`,
+    { banners: banners })
+    .pipe(map(res => {
       return res;
     }));
   }

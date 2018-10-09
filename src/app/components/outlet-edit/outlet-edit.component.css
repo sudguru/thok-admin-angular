@@ -1,0 +1,6 @@
+@import "https://cdn.quilljs.com/1.2.2/quill.snow.css";
+@import "https://cdn.quilljs.com/1.2.2/quill.bubble.css";
+
+agm-map {
+    height: 300px;
+}

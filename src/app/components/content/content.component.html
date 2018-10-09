@@ -7,8 +7,9 @@
         <mat-list dense>
             <ng-container *ngFor="let content of contents">
                 <mat-list-item (click)="addEdit(content)" style="cursor:default">
-                    <mat-icon matListIcon>folder</mat-icon>
-                    <h3 matLine> {{content.title}} </h3>
+                    <ng-content></ng-content>
+                    <mat-icon matListIcon>{{content.icon}}</mat-icon>
+                    <h3 matLine> {{content.title}}</h3>
                 </mat-list-item>
             </ng-container>
         </mat-list>

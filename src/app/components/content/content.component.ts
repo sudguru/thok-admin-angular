@@ -10,6 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
+  custom_icons = [
+    { for: 'Blog', icon: 'chat_bubble' },
+    { for: 'Info', icon : 'info' },
+  ];
 
   headerData: any = {
     title: 'Contents',
@@ -23,10 +27,13 @@ export class ContentComponent implements OnInit {
     private contentService: ContentService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.setNewContent();
-    this.contentService.getContents().subscribe(res => {
+    await this.contentService.getContents().subscribe(res => {
       this.contents = res;
+      this.contents.forEach(c => {
+        c.icon = this.custom_icons.find(s => s.for === c.content_type).icon;
+      });
     });
   }
 
@@ -35,7 +42,8 @@ export class ContentComponent implements OnInit {
       id: 0,
       title: '',
       slug: '',
-      content: ''
+      content: '',
+      content_type: 'Blog'
     };
   }
 

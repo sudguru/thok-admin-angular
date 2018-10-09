@@ -1,34 +1,33 @@
 <app-header [headerData]="headerData"></app-header>
 
 <div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
-    <div fxFlex="50%" fxFlex.lt-md="100%" style="padding-top: 30px;">
-        <form #catForm="ngForm" novalidate>
+  <div fxFlex="50%" fxFlex.lt-md="100%" style="padding-top: 30px;">
+    <form #catForm="ngForm" novalidate>
 
-          <mat-form-field class="full-width">
-              <mat-select [(value)]="banner.position" name="position" placeholder="Select Position">
-                <mat-option value="Home Main">Home Main</mat-option>
-                <mat-option value="Home Sub Main">Home Sub Main</mat-option>
-              </mat-select>
-          </mat-form-field>
+      <div style="margin-top: 30px" *ngIf="banner.id > 0">
+        <img [src]="imagePath+banner.banner" style="width: 50%; margin: 0 auto">
+      </div>
 
-          <div style="margin-top: 30px" *ngIf="banner.id > 0">
-            <img [src]="imagePath+banner.banner" style="width: 50%; margin: 0 auto">
-          </div>
+      <mat-form-field class="full-width" style="margin-top: 30px">
+        <mat-select [(value)]="banner.position" name="position" placeholder="Select Position" required>
+          <mat-option value="Home Main">Home Main</mat-option>
+          <mat-option value="Home Sub Main">Home Sub Main</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-          <div style="margin-top: 30px" *ngIf="banner.id == 0">
-              <button mat-button (click)="chooseFile()" [disabled]="catForm.invalid" color="warn">Choose Banner (New)</button>
-              <input type="file" id="myFile" name="myFile" style="display: none" (change)="prepareFile($event)"  />
-          </div>
 
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-              <button fxFlex="1" mat-raised-button (click)="updateBanner(banner)" [disabled]="catForm.invalid" color="primary">Save</button>
-              <div fxFlex="auto"></div>
-              <button fxFlex="1" mat-raised-button (click)="deleteBanner(banner)" [disabled]="catForm.invalid" color="warn">Delete</button>
-          </div>
-        </form>
+      <div style="margin-top: 30px" *ngIf="banner.id == 0">
+        <button mat-raised-button (click)="chooseFile()" [disabled]="catForm.invalid" color="warn">Choose Banner (New)</button>
+        <input type="file" id="myFile" name="myFile" style="display: none" (change)="prepareFile($event)" />
+      </div>
 
-        
-    
-    </div>
-   
+      <div fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 30px" *ngIf="banner.id > 0">
+        <button fxFlex="1" mat-raised-button (click)="updateBanner(banner)" [disabled]="catForm.invalid" color="primary">Save</button>
+        <div fxFlex="auto"></div>
+        <button fxFlex="1" mat-raised-button (click)="deleteBanner(banner)" [disabled]="catForm.invalid" color="warn">Delete</button>
+      </div>
+    </form>
+
+  </div>
+
 </div>

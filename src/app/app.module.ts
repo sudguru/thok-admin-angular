@@ -24,11 +24,14 @@ import { ContentEditComponent } from './components/content-edit/content-edit.com
 
 import { QuillModule } from 'ngx-quill';
 import { SortablejsModule } from 'angular-sortablejs';
+import { AgmCoreModule } from '@agm/core';
 
 import { BannerComponent } from './components/banner/banner.component';
 import { BannerEditComponent } from './components/banner-edit/banner-edit.component';
 import { ListEditComponent } from './components/list-edit/list-edit.component';
 import { ListComponent } from './components/list/list.component';
+import { OutletComponent } from './components/outlet/outlet.component';
+import { OutletEditComponent } from './components/outlet-edit/outlet-edit.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,8 @@ import { ListComponent } from './components/list/list.component';
     BannerEditComponent,
     ListEditComponent,
     ListComponent,
+    OutletComponent,
+    OutletEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +63,9 @@ import { ListComponent } from './components/list/list.component';
     FlexLayoutModule,
     QuillModule,
     SortablejsModule.forRoot({ animation: 150 }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDM56_qNOsN6oNmaRapcWK5rZbFK69K6co'
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

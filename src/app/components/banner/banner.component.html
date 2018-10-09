@@ -6,19 +6,21 @@
     <div fxFlex="50%" fxFlex.lt-md="100%">
         <h3>Home Main Banners</h3>
         <div [sortablejs]="homeMains" [sortablejsOptions]="optionsHome">
-            <div *ngFor="let banner of homeMains" style="float: left; margin-right: 25px;">
+            <div *ngFor="let banner of homeMains" style="float: left; margin-right: 25px; text-align: right">
                 <img [src]="'http://localhost:8080/uploads/banner/'+banner.banner" style="width: 200px; height: 200px" />
+                <br/>
+                <button mat-icon-button (click)="addEdit(banner)" style="margin: 0 auto"><mat-icon>edit</mat-icon></button>
             </div>
         </div>
-        <div>{{homeMains | json}}</div>
         <div style="clear: both"></div>
         <h3>Home Sub Banners</h3>
-        <div [sortablejs]="homeSubMains">
-            <div *ngFor="let banner of homeSubMains" style="float: left; margin-right: 25px;">
+        <div [sortablejs]="homeSubMains" [sortablejsOptions]="optionsHomeSub">
+            <div *ngFor="let banner of homeSubMains" style="float: left; margin-right: 25px; text-align: center">
                 <img [src]="'http://localhost:8080/uploads/banner/'+banner.banner" style="width: 200px; height: 200px" />
+                <br/>
+                <button mat-icon-button (click)="addEdit(banner)" style="margin: 0 auto"><mat-icon>edit</mat-icon></button>
             </div>
         </div>
-        <div>{{homeSubMains | json}}</div>
         <div style="clear: both"></div>
     </div>
    

@@ -1,0 +1,50 @@
+<app-header [headerData]="headerData"></app-header>
+
+<div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
+  <div fxFlex="50%" fxFlex.lt-md="100%" style="padding-top: 30px;">
+    <form #catForm="ngForm" novalidate>
+
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Outlet:" [(ngModel)]="outlet.outlet" name="outlet" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Contact Person:" [(ngModel)]="outlet.contact_person" name="contact_person"
+          required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Address:" [(ngModel)]="outlet.address" name="address">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Phone:" [(ngModel)]="outlet.phone" name="phone">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email:" [(ngModel)]="outlet.email" name="email">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Viber:" [(ngModel)]="outlet.viber" name="viber">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Whats App:" [(ngModel)]="outlet.whatsapp" name="whatsapp">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Skype:" [(ngModel)]="outlet.skype" name="skype">
+      </mat-form-field>
+
+      <agm-map [latitude]="outlet.lat" [longitude]="outlet.lng" [zoom]="14" (mapClick)="chooseLocation($event)">
+        <agm-marker [latitude]="outlet.lat" [longitude]="outlet.lat"></agm-marker>
+      </agm-map>
+      {{outlet.lat}}, {{outlet.lng}}
+      <quill-editor [modules]="modules" [style]="{height: '300px'}" [(ngModel)]="outlet.description" name="description"></quill-editor>
+
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 25px">
+        <button fxFlex="1" mat-raised-button (click)="saveOutlet(outlet)" [disabled]="catForm.invalid" color="primary">Save</button>
+        <div fxFlex="auto"></div>
+        <button fxFlex="1" mat-raised-button (click)="deleteOutlet(outlet)" [disabled]="catForm.invalid" color="warn">Delete</button>
+      </div>
+    </form>
+
+  </div>
+
+</div>

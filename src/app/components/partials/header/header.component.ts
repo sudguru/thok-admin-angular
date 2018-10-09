@@ -62,4 +62,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/lists']);
   }
 
+  maps() {
+    this.router.navigate(['/outlets']);
+  }
+
 }

@@ -2,6 +2,7 @@ import { BannerService } from './../../services/banner.service';
 import { Banner } from './../../models/banner.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-banner',
@@ -12,7 +13,7 @@ export class BannerComponent implements OnInit {
   homeMains = [];
   homeSubMains = [];
   optionsHome: {};
-
+  optionsHomeSub: {};
   headerData: any = {
     title: 'Banners',
     backBtn: false,
@@ -22,11 +23,18 @@ export class BannerComponent implements OnInit {
   banners: Banner[];
   constructor(
     private bannerService: BannerService,
-    private router: Router
+    private router: Router,
+    private snackbar: MatSnackBar
   ) {
     this.optionsHome = {
       onUpdate: (event: any) => {
-        console.log(this.homeMains);
+        this.reorderBanners(this.homeMains);
+      }
+    };
+
+    this.optionsHomeSub = {
+      onUpdate: (event: any) => {
+        this.reorderBanners(this.homeSubMains);
       }
     };
   }
@@ -46,12 +54,22 @@ export class BannerComponent implements OnInit {
       banner: '',
       title: '',
       display_order: 0,
-      position: ''
+      position: 'Home Main'
     };
   }
 
   addEdit(banner: Banner) {
     this.router.navigate(['/banner/', JSON.stringify(banner)]);
+  }
+
+  reorderBanners(banners: Banner[]) {
+    this.bannerService.reorderBanners(banners).subscribe(res => {
+      if (!res.error) {
+        this.snackbar.open('Banners Reordered!', '', { duration: 2000 });
+      } else {
+        this.snackbar.open('Reordered Failed', '', { duration: 2000 });
+      }
+    });
   }
 
   list_to_tree(list) {
