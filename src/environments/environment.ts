@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   environment: 'LOCAL',
   apiUrl: 'http://localhost:8080',
-  contentTypes: ['Blog', 'Info', 'About']
+  contentTypes: ['Blog', 'Info', 'About'],
+  bannerPositions: ['Home Main', 'Home Sub Main', 'Others']
 };
 
 /*

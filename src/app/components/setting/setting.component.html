@@ -30,6 +30,34 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Short Description:" [(ngModel)]="setting.description" name="description" required>
       </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Facebook:" [(ngModel)]="setting.facebook" name="facebook">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Twitter:" [(ngModel)]="setting.twitter" name="twitter">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Google Plus:" [(ngModel)]="setting.googleplus" name="googleplus">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="YouTube:" [(ngModel)]="setting.youtube" name="youtube">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Viber:" [(ngModel)]="setting.viber" name="viber">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="WhatsApp:" [(ngModel)]="setting.whatsapp" name="whatsapp">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Skype:" [(ngModel)]="setting.skype" name="skype">
+      </mat-form-field>
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <button fxFlex="1" mat-raised-button (click)="saveSetting(setting)" [disabled]="settingForm.invalid" color="primary">Save</button>
       </div>

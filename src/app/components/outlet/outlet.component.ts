@@ -43,8 +43,8 @@ export class OutletComponent implements OnInit {
       viber: '',
       whatsapp: '',
       skype: '',
-      lat: 27.7212251,
-      lng: 85.299318,
+      lat: 27.719707472886697,
+      lng: 85.30918119466924,
       slug: ''
     };
   }

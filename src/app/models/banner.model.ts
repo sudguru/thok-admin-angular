@@ -4,4 +4,5 @@ export interface Banner {
     display_order: number;
     position: string;
     banner: string;
+    link: string;
 }

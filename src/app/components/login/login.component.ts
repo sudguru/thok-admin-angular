@@ -32,7 +32,11 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
 
     // get return url from route parameters or default to '/'
-    const tempUrl = '/' + this.route.snapshot.queryParams['returnUrl'].split('/')[1];
+    const returnurl = this.route.snapshot.queryParams['returnUrl'];
+    let tempUrl;
+    if (returnurl) {
+      tempUrl = '/' + returnurl.split('/')[1];  
+    } 
     this.returnUrl = tempUrl || '/';
     console.log('ru', this.returnUrl);
   }
