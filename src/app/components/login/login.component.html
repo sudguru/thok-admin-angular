@@ -6,14 +6,15 @@
 
   </span> 
   <span class='toolbar-login-logo'>
-    <mat-icon style="margin: 4px 10px 0 0">nfc</mat-icon>
+    <mat-icon style="margin: 0 10px 0 0">nfc</mat-icon>
     <span style="font-weight: 400; font-size: 18px;">Thoksaman Admin</span>
   </span>
   <span class="flex-1 text-right">
     <button mat-button (click)="help()" color="primary">Help</button>
   </span>
 </mat-toolbar>
-<div class="loginform">
+<div fxLayout="row" fxLayoutAlign="center" style="padding: 15px">
+<div class="loginform" fxFlex="50%" fxFlex.lt-md="100%">
   <form #loginForm="ngForm" novalidate>
 
       <mat-form-field class="full-width">
@@ -28,5 +29,5 @@
       <button mat-raised-button (click)="login(loginUser)" [disabled]="loginForm.invalid" color="primary">Login</button>
 
   </form>
-
+</div>
 </div>

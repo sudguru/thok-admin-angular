@@ -16,4 +16,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  ddd(event) {
+    alert(event);
+  }
+
 }

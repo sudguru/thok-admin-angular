@@ -1,38 +1,24 @@
 <mat-toolbar color="accent" fxLayout="row" fxLayoutAlign="space-bewteen center" style="height: 50px;">
+  
   <span fxFlex fxLaout="row" fxLayoutAlign="start center">
-    <button *ngIf="headerData.backBtn" mat-icon-button (click)="_location.back()">
+    <button *ngIf="headerData.backBtn" mat-icon-button (click)="_location.back()" style="margin-right: 30px">
       <mat-icon aria-label="Example icon-button with a heart icon">arrow_back</mat-icon>
     </button>
-    <mat-icon style="margin: 4px 10px 0 0">nfc</mat-icon>
+    <mat-icon style="margin: 0 10px 0 0">nfc</mat-icon>
     <span style="font-weight: 400; font-size: 18px;" fxShow fxHide.xs="true">Thoksaman Admin</span>
   </span>
-  <span class="text-center" fxFlex>
 
-    <span style="font-weight: 400; font-size: 16px; color: #333;">
+  <span class="text-center" style="font-weight: 400; font-size: 16px; color: #333;" fxFlex>
       {{headerData.title}}
-    </span>
-
   </span>
 
   <span class="text-right" fxFlex>
-    <button *ngIf="!headerData.backBtn" mat-icon-button [matMenuTriggerFor]="menu">
+    <button *ngIf="!headerData.backBtn" mat-icon-button (click)="sidenavtoggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+  </span>
 
-      <button mat-menu-item (click)="dashboard()">
-        <mat-icon>dashboard</mat-icon>
-        <span>Dashboard</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item (click)="categories()">
-        <mat-icon>list</mat-icon>
-        <span>Categories</span>
-      </button>
-      <button mat-menu-item (click)="paymentMethods()">
-        <mat-icon>payment</mat-icon>
-        <span>Payment Methods</span>
-      </button>
+  <!-- 
       <button mat-menu-item (click)="contents()">
         <mat-icon>description</mat-icon>
         <span>Contents</span>
@@ -73,5 +59,5 @@
         <span>Log Out</span>
       </button>
     </mat-menu>
-  </span>
+  </span> -->
 </mat-toolbar>

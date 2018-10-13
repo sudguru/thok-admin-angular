@@ -1,6 +1,8 @@
+import { DataService } from './../../../services/data.service';
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-header',
@@ -10,29 +12,24 @@ import { Location } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
   @Input() headerData: any;
+
+  sidenavState: boolean;
   constructor(
     public _location: Location,
     private router: Router,
-  ) { }
+    private dataService: DataService
+  ) {}
+
+  sidenavtoggle() {
+    this.sidenavState = !this.sidenavState;
+    this.dataService.changeData(this.sidenavState);
+  }
 
   ngOnInit() {
+    this.dataService.currentSideNavState.subscribe(currentState => this.sidenavState = currentState);
   }
 
-  logout() {
-    this.router.navigate(['/login']);
-  }
 
-  dashboard() {
-    this.router.navigate(['/dashboard']);
-  }
-
-  categories() {
-    this.router.navigate(['/categories']);
-  }
-
-  paymentMethods() {
-    this.router.navigate(['/paymentmethods']);
-  }
 
   users() {
     this.router.navigate(['/users']);

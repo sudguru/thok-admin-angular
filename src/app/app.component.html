@@ -1,1 +1,21 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container class="main-container">
+    <mat-sidenav #sidenav mode="side" [opened]="sidenavState" position="end" style="height: 100%">
+      <mat-toolbar color="primary" style="height: 50px;">
+        <span style="font-weight: 400; font-size: 16px; color: #fff;">Menu</span>
+      </mat-toolbar>
+      <mat-nav-list>
+        <ng-container *ngFor="let link of links">
+            <mat-divider *ngIf="link.title == 'divider'"></mat-divider>
+            <a *ngIf="link.title != 'divider'" mat-list-item   [routerLink]="link.routerlink">
+                <mat-icon style="margin-right: 15px">{{link.icon}}</mat-icon> {{ link.title }}
+            </a>
+        </ng-container>
+        
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <mat-sidenav-content style="height: 100%">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

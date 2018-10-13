@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { ServerResponse } from './../../models/server-response.model';
 import { AuthenticationService } from './../../services/auth.service';
 import { Login } from './../../models/login.model';
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private route: ActivatedRoute,
     private router: Router,
+    private dataService: DataService
     ) { }
 
   ngOnInit() {
@@ -32,9 +34,12 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
 
     // get return url from route parameters or default to '/'
-    const tempUrl = '/' + this.route.snapshot.queryParams['returnUrl'].split('/')[1];
+    let tempUrl;
+    if (this.route.snapshot.queryParams['returnUrl']) {
+      tempUrl = '/' + this.route.snapshot.queryParams['returnUrl'].split('/')[1];
+    }
     this.returnUrl = tempUrl || '/';
-    console.log('ru', this.returnUrl);
+    this.dataService.changeData(false);
   }
 
   login (loginUser: Login) {
