@@ -62,7 +62,7 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 }
 
 .fabbtn {
-    position: absolute !important;
+    position: fixed !important;
     right: 20px;
     bottom: 20px;
 }

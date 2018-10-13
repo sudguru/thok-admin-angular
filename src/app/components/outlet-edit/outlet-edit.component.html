@@ -31,9 +31,11 @@
         <input matInput placeholder="Skype:" [(ngModel)]="outlet.skype" name="skype">
       </mat-form-field>
 
-      <agm-map [latitude]="outlet.lat" [longitude]="outlet.lng" [zoom]="14" (mapClick)="chooseLocation($event)">
-        <agm-marker [latitude]="outlet.lat" [longitude]="outlet.lat"></agm-marker>
+      <agm-map [latitude]="outlet.lat" [longitude]="outlet.lng" [zoom]="15" (mapClick)="chooseLocation($event)">
+        <agm-marker [latitude]="outlet.lat" [longitude]="outlet.lng">
+        </agm-marker>
       </agm-map>
+
       {{outlet.lat}}, {{outlet.lng}}
       <quill-editor [modules]="modules" [style]="{height: '300px'}" [(ngModel)]="outlet.description" name="description"></quill-editor>
 

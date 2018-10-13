@@ -43,9 +43,9 @@ export class BannerService {
       }));
   }
 
-  uploadImageAndAddRecord(dataurl: string | ArrayBuffer, filename: string, position: string) {
+  uploadImageAndAddRecord(dataurl: string | ArrayBuffer, filename: string, position: string, title: string, link: string) {
     return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/uploadbanner`,
-    {myFile: dataurl, filename: filename, secret: 'SudeepsSecret', position: position})
+    {myFile: dataurl, filename: filename, secret: 'SudeepsSecret', position: position, title: title, link: link})
     .pipe(map(res => {
       return res;
     }));

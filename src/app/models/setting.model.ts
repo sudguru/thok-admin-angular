@@ -7,4 +7,11 @@ export interface Setting {
   email: string;
   order_email: string;
   description: string;
+  facebook: string;
+  twitter: string;
+  googleplus: string;
+  youtube: string;
+  viber: string;
+  whatsapp: string;
+  skype: string;
 }

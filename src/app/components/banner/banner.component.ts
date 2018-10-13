@@ -3,6 +3,8 @@ import { Banner } from './../../models/banner.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { environment } from './../../../environments/environment';
+
 
 @Component({
   selector: 'app-banner',
@@ -21,22 +23,24 @@ export class BannerComponent implements OnInit {
   };
   newBanner: Banner;
   banners: Banner[];
+  bannerPositions = environment.bannerPositions;
   constructor(
     private bannerService: BannerService,
     private router: Router,
     private snackbar: MatSnackBar
   ) {
-    this.optionsHome = {
-      onUpdate: (event: any) => {
-        this.reorderBanners(this.homeMains);
-      }
-    };
 
-    this.optionsHomeSub = {
-      onUpdate: (event: any) => {
-        this.reorderBanners(this.homeSubMains);
-      }
-    };
+      this.optionsHome = {
+        onUpdate: (event: any) => {
+          this.reorderBanners(this.homeMains);
+        }
+      };
+
+      this.optionsHomeSub = {
+        onUpdate: (event: any) => {
+          this.reorderBanners(this.homeSubMains);
+        }
+      };
   }
 
   ngOnInit() {
@@ -54,7 +58,8 @@ export class BannerComponent implements OnInit {
       banner: '',
       title: '',
       display_order: 0,
-      position: 'Home Main'
+      position: 'Home Main',
+      link: ''
     };
   }
 

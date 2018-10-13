@@ -34,10 +34,12 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
 
     // get return url from route parameters or default to '/'
+
     let tempUrl;
     if (this.route.snapshot.queryParams['returnUrl']) {
       tempUrl = '/' + this.route.snapshot.queryParams['returnUrl'].split('/')[1];
     }
+
     this.returnUrl = tempUrl || '/';
     this.dataService.changeData(false);
   }

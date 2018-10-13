@@ -22,6 +22,7 @@ export class BannerEditComponent implements OnInit {
     edit: true
   };
   imagePath = `${environment.apiUrl}/uploads/banner/`;
+  bannerPositions = environment.bannerPositions;
   constructor(
     private route: ActivatedRoute,
     private bannerService: BannerService,
@@ -71,11 +72,13 @@ export class BannerEditComponent implements OnInit {
     const file = event.target.files[0];
     const filename = file.name;
     const position = this.banner.position;
+    const title = this.banner.title;
+    const link = this.banner.link;
     const reader = new FileReader();
     const that = this;
     reader.onloadend = function () {
       that.imageDataURL = reader.result;
-      that.bannerService.uploadImageAndAddRecord(that.imageDataURL, filename, position).subscribe(res => {
+      that.bannerService.uploadImageAndAddRecord(that.imageDataURL, filename, position, title, link).subscribe(res => {
         if (!res.error) {
           that.banner.banner = res.data;
           that.snackbar.open(`${res.data} uploaded Successfully.`, '', { duration: 3000 });

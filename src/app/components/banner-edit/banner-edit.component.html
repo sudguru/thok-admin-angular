@@ -5,14 +5,22 @@
     <form #catForm="ngForm" novalidate>
 
       <div style="margin-top: 30px" *ngIf="banner.id > 0">
-        <img [src]="imagePath+banner.banner" style="width: 50%; margin: 0 auto">
+        <img [src]="imagePath+banner.banner" style="width: 200px; height: 200px; margin: 0 auto">
       </div>
 
       <mat-form-field class="full-width" style="margin-top: 30px">
         <mat-select [(value)]="banner.position" name="position" placeholder="Select Position" required>
-          <mat-option value="Home Main">Home Main</mat-option>
-          <mat-option value="Home Sub Main">Home Sub Main</mat-option>
+          <mat-option *ngFor="let bp of bannerPositions" [value]="bp">{{bp}}</mat-option>
         </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Title:" [(ngModel)]="banner.title" name="title" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Link:" [(ngModel)]="banner.link" name="link">
+        <mat-hint>Must start with http(s)</mat-hint>
       </mat-form-field>
 
 
