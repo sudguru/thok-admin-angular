@@ -37,6 +37,7 @@ export class ContentEditComponent implements OnInit {
     this.content.content = this.rhtmlspecialchars(this.content.content );
     if (this.content.id === 0) {
       this.headerData.title = `Add New Content`;
+      this.headerData.edit = false;
     } else {
       this.headerData.title = `Edit: ${this.content.title}`;
     }
@@ -106,5 +107,11 @@ export class ContentEditComponent implements OnInit {
      str = str.replace(/&amp;/ig, '&'); /* must do &amp; last */
      }
     return str;
+  }
+
+  checkAndDelete(event) {
+    if (event) {
+      this.deleteContent(this.content);
     }
+  }
 }

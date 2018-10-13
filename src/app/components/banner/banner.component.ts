@@ -19,7 +19,7 @@ export class BannerComponent implements OnInit {
   headerData: any = {
     title: 'Banners',
     backBtn: false,
-    edit: true
+    edit: false
   };
   newBanner: Banner;
   banners: Banner[];

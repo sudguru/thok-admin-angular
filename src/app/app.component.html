@@ -1,5 +1,5 @@
 <mat-sidenav-container class="main-container">
-    <mat-sidenav #sidenav mode="side" [opened]="sidenavState" position="end" style="height: 100%">
+    <mat-sidenav #sidenav mode="side" [opened]="sidenavState" position="end">
       <mat-toolbar color="primary" style="height: 50px;">
         <span style="font-weight: 400; font-size: 16px; color: #fff;">Menu</span>
       </mat-toolbar>
@@ -14,7 +14,7 @@
       </mat-nav-list>
     </mat-sidenav>
   
-    <mat-sidenav-content style="height: 100%">
+    <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

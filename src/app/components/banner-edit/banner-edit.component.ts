@@ -33,6 +33,7 @@ export class BannerEditComponent implements OnInit {
     console.log('id is ', this.banner.banner);
     if (this.banner.id === 0) {
       this.headerData.title = `Add New Banner`;
+      this.headerData.edit = false;
     } else {
       this.headerData.title = `Edit Banner:`;
     }
@@ -90,5 +91,11 @@ export class BannerEditComponent implements OnInit {
     };
     reader.readAsDataURL(file);
 
+  }
+
+  checkAndDelete(event) {
+    if (event) {
+      this.deleteBanner(this.banner);
+    }
   }
 }

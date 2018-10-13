@@ -15,7 +15,7 @@ export class OutletComponent implements OnInit {
   headerData: any = {
     title: 'Outlets',
     backBtn: false,
-    edit: true
+    edit: false
   };
   newOutlet: Outlet;
   outlets: Outlet[];

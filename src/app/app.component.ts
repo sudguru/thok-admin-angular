@@ -11,8 +11,8 @@ export class AppComponent {
   title = 'admin-angular';
   sidenavState: boolean;
   links = [
-    { title: 'Categories', icon: 'list', routerlink: '/categories'},
     { title: 'Dashboard', icon: 'dashboard', routerlink: '/dashboard'},
+    { title: 'Categories', icon: 'list', routerlink: '/categories'},
     { title: 'Payment Methods', icon: 'payment', routerlink: '/paymentmethods'},
     { title: 'Contents', icon: 'description', routerlink: '/contents'},
     { title: 'Banners', icon: 'image', routerlink: '/banners'},

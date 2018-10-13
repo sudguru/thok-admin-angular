@@ -1,4 +1,4 @@
-<app-header [headerData]="headerData"></app-header>
+<app-header [headerData]="headerData" (deleteClick)="checkAndDelete($event)"></app-header>
 
 <div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
     <div fxFlex="50%" fxFlex.lt-md="100%" style="padding-top: 30px;">
@@ -19,8 +19,6 @@
 
             <div fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 25px">
                 <button fxFlex="1" mat-raised-button (click)="saveContent(content)" [disabled]="catForm.invalid" color="primary">Save</button>
-                <div fxFlex="auto"></div>
-                <button fxFlex="1" mat-raised-button (click)="deleteContent(content)" [disabled]="catForm.invalid" color="warn">Delete</button>
             </div>
         </form>
  

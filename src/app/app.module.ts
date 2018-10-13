@@ -32,6 +32,7 @@ import { ListEditComponent } from './components/list-edit/list-edit.component';
 import { ListComponent } from './components/list/list.component';
 import { OutletComponent } from './components/outlet/outlet.component';
 import { OutletEditComponent } from './components/outlet-edit/outlet-edit.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { OutletEditComponent } from './components/outlet-edit/outlet-edit.compon
     ListComponent,
     OutletComponent,
     OutletEditComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,7 @@ import { OutletEditComponent } from './components/outlet-edit/outlet-edit.compon
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AlertComponent]
 })
 export class AppModule { }

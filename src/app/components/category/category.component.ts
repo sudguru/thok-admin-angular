@@ -12,7 +12,7 @@ export class CategoryComponent implements OnInit {
   headerData: any = {
     title: 'Categories',
     backBtn: false,
-    edit: true
+    edit: false
   };
   newCategory: Category;
   categories: Category[];

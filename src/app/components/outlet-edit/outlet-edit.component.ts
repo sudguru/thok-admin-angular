@@ -35,6 +35,7 @@ export class OutletEditComponent implements OnInit {
     this.outlet.lng = +this.outlet.lng;
     if (this.outlet.id === 0) {
       this.headerData.title = `Add New Outlet`;
+      this.headerData.edit = false;
     } else {
       this.headerData.title = `Edit: ${this.outlet.outlet}`;
     }
@@ -109,5 +110,11 @@ export class OutletEditComponent implements OnInit {
     chooseLocation(event) {
       this.outlet.lat = event.coords.lat;
       this.outlet.lng = event.coords.lng;
+    }
+
+    checkAndDelete(event) {
+      if (event) {
+        this.deleteOutlet(this.outlet);
+      }
     }
 }

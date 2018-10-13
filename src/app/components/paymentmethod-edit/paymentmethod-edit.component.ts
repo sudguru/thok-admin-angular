@@ -1,7 +1,7 @@
 import { PaymentmethodService } from './../../services/paymentmethod.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { Paymentmethod } from '../../models/paymentmethod.model';
 
 @Component({
@@ -16,7 +16,7 @@ export class PaymentmethodEditComponent implements OnInit {
   headerData: any = {
     title: 'Payment Methods',
     backBtn: true,
-    edit: true
+    edit: true,
   };
 
   constructor(
@@ -28,6 +28,7 @@ export class PaymentmethodEditComponent implements OnInit {
     this.paymentmethod = JSON.parse(this.route.snapshot.paramMap.get('paymentmethod'));
     if (this.paymentmethod.id === 0) {
       this.headerData.title = `Add New Payment Method`;
+      this.headerData.edit = false;
     } else {
       this.headerData.title = `Edit Payment Method: ${this.paymentmethod.payment_method}`;
     }
@@ -38,7 +39,6 @@ export class PaymentmethodEditComponent implements OnInit {
 
   savePaymentmethod(paymentmethod: Paymentmethod) {
     this.pmService.savePaymentmethod(paymentmethod).subscribe(res => {
-      console.log('save', res);
       if (!res.error) {
         this.snackbar.open(`${paymentmethod.payment_method} Saved.`, '', { duration: 3000 });
         this.router.navigate(['/paymentmethods']);
@@ -58,4 +58,11 @@ export class PaymentmethodEditComponent implements OnInit {
       }
     });
   }
+
+  checkAndDelete(event) {
+    if (event) {
+      this.deletePaymentmethod(this.paymentmethod);
+    }
+  }
+
 }

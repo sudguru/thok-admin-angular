@@ -13,7 +13,7 @@ export class PaymentmethodComponent implements OnInit {
   headerData: any = {
     title: 'Payment Methods',
     backBtn: false,
-    edit: true
+    edit: false
   };
   newPaymentmethod: Paymentmethod;
   paymentmethods: Paymentmethod[];

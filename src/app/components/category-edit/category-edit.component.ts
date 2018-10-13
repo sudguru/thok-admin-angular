@@ -29,6 +29,7 @@ export class CategoryEditComponent implements OnInit {
     console.log('id is ', this.category.category);
     if (this.category.id === 0) {
       this.headerData.title = `Add New Category`;
+      this.headerData.edit = false;
     } else {
       this.headerData.title = `Edit Category: ${this.category.category}`;
     }
@@ -84,5 +85,11 @@ export class CategoryEditComponent implements OnInit {
     };
     reader.readAsDataURL(file);
 
+  }
+
+  checkAndDelete(event) {
+    if (event) {
+      this.deleteCategory(this.category);
+    }
   }
 }

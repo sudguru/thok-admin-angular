@@ -18,7 +18,7 @@ export class ContentComponent implements OnInit {
   headerData: any = {
     title: 'Contents',
     backBtn: false,
-    edit: true
+    edit: false
   };
   newContent: Content;
   contents: Content[];
