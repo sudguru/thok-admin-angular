@@ -1,3 +1,5 @@
+import { MessageEditComponent } from './components/message-edit/message-edit.component';
+import { MessageComponent } from './components/message/message.component';
 import { OutletComponent } from './components/outlet/outlet.component';
 import { ListEditComponent } from './components/list-edit/list-edit.component';
 import { ListComponent } from './components/list/list.component';
@@ -18,6 +20,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guards';
 import { PaymentmethodComponent } from './components/paymentmethod/paymentmethod.component';
 import { OutletEditComponent } from './components/outlet-edit/outlet-edit.component';
+import { InfoboxEditComponent } from './components/infobox-edit/infobox-edit.component';
+import { InfoboxComponent } from './components/infobox/infobox.component';
 
 const routes: Routes = [
     {
@@ -31,7 +35,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'categories',
+        path: 'category',
         component: CategoryComponent,
         canActivate: [AuthGuard]
     },
@@ -41,7 +45,27 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'paymentmethods',
+        path: 'infobox',
+        component: InfoboxComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'infobox/:infobox',
+        component: InfoboxEditComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'message',
+        component: MessageComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'message/:message',
+        component: MessageEditComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'paymentmethod',
         component: PaymentmethodComponent,
         canActivate: [AuthGuard]
     },
@@ -51,7 +75,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'contents',
+        path: 'content',
         component: ContentComponent,
         canActivate: [AuthGuard]
     },
@@ -61,7 +85,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'banners',
+        path: 'banner',
         component: BannerComponent,
         canActivate: [AuthGuard]
     },
@@ -71,7 +95,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'lists',
+        path: 'list',
         component: ListComponent,
         canActivate: [AuthGuard]
     },
@@ -81,7 +105,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'outlets',
+        path: 'outlet',
         component: OutletComponent,
         canActivate: [AuthGuard]
     },
@@ -91,7 +115,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'settings',
+        path: 'setting',
         component: SettingComponent,
         canActivate: [AuthGuard]
     },

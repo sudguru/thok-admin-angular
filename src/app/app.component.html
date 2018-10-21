@@ -1,5 +1,5 @@
 <mat-sidenav-container class="main-container">
-    <mat-sidenav #sidenav mode="side" [opened]="sidenavState" position="end">
+    <mat-sidenav #sidenav mode="side" [opened]="sidenavState" position="start">
       <mat-toolbar color="primary" style="height: 50px;">
         <span style="font-weight: 400; font-size: 16px; color: #fff;">Menu</span>
       </mat-toolbar>
@@ -10,12 +10,11 @@
                 <mat-icon style="margin-right: 15px">{{link.icon}}</mat-icon> {{ link.title }}
             </a>
         </ng-container>
-        
+
       </mat-nav-list>
     </mat-sidenav>
-  
+
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  

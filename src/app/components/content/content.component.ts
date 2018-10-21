@@ -30,6 +30,7 @@ export class ContentComponent implements OnInit {
   async ngOnInit() {
     this.setNewContent();
     await this.contentService.getContents().subscribe(res => {
+      console.log(res);
       this.contents = res;
       this.contents.forEach(c => {
         c.icon = this.custom_icons.find(s => s.for === c.content_type).icon;

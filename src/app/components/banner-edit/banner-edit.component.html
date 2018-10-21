@@ -5,7 +5,8 @@
     <form #catForm="ngForm" novalidate>
 
       <div style="margin-top: 30px" *ngIf="banner.id > 0">
-        <img [src]="imagePath+banner.banner" style="width: 200px; height: 200px; margin: 0 auto">
+<!--         <img [src]="imagePath+banner.banner" style="width: 200px; height: 200px; margin: 0 auto"> -->
+        <div  class="image-container" [ngStyle]="{'background-image': 'url(' + imagePath+banner.banner + ')'}"></div>
       </div>
 
       <mat-form-field class="full-width" style="margin-top: 30px">
@@ -17,6 +18,18 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Title:" [(ngModel)]="banner.title" name="title" required>
       </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Subtitle:" [(ngModel)]="banner.subtitle" name="subtitle" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+          <mat-select [(value)]="banner.textat" name="textat" placeholder="Show Title/Subtitle on" required>
+            <mat-option value="left">Left</mat-option>
+            <mat-option value="right">Right</mat-option>
+            <mat-option value="center">Center</mat-option>
+          </mat-select>
+        </mat-form-field>
 
       <mat-form-field class="full-width">
         <input matInput placeholder="Link:" [(ngModel)]="banner.link" name="link">

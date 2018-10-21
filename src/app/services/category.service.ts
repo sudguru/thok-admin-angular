@@ -17,6 +17,7 @@ export class CategoryService {
   getCategories() {
     return this.http.get<ServerResponse>(`${environment.apiUrl}/admin/categories`)
       .pipe(map(res => {
+          console.log(res);
           return res.data;
       }));
   }
@@ -57,10 +58,10 @@ export class CategoryService {
   }
 
   uploadImage(id: number, dataurl: string | ArrayBuffer, filename: string) {
-    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/uploadphoto`,
+    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/category/uploadphoto`,
     { id: id, myFile: dataurl, filename: filename, secret: 'SudeepsSecret'})
     .pipe(map(res => {
-      console.log(res);
+      // console.log(res);
       return res;
     }));
   }

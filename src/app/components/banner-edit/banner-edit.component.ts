@@ -21,7 +21,7 @@ export class BannerEditComponent implements OnInit {
     backBtn: true,
     edit: true
   };
-  imagePath = `${environment.apiUrl}/uploads/banner/`;
+  imagePath = `${environment.apiUrl}/uploads/banners/`;
   bannerPositions = environment.bannerPositions;
   constructor(
     private route: ActivatedRoute,
@@ -47,7 +47,7 @@ export class BannerEditComponent implements OnInit {
     this.bannerService.updateBanner(banner).subscribe(res => {
       if (!res.error) {
         this.snackbar.open(`${banner.banner} Saved.`, '', { duration: 3000 });
-        this.router.navigate(['/banners']);
+        this.router.navigate(['/banner']);
       } else {
         this.snackbar.open(`Record could not be Saved !! `, '', { duration: 3000 });
       }
@@ -58,7 +58,7 @@ export class BannerEditComponent implements OnInit {
     this.bannerService.deleteBanner(banner).subscribe(res => {
       if (!res.error) {
         this.snackbar.open(`${res.data} record(s) Deleted.`, '', { duration: 3000 });
-        this.router.navigate(['/banners']);
+        this.router.navigate(['/banner']);
       } else {
         this.snackbar.open(`Record could not be Deleted !! `, '', { duration: 3000 });
       }
@@ -74,16 +74,19 @@ export class BannerEditComponent implements OnInit {
     const filename = file.name;
     const position = this.banner.position;
     const title = this.banner.title;
+    const subtitle = this.banner.subtitle;
     const link = this.banner.link;
+    const textat = this.banner.textat;
     const reader = new FileReader();
     const that = this;
+    console.log(subtitle);
     reader.onloadend = function () {
       that.imageDataURL = reader.result;
-      that.bannerService.uploadImageAndAddRecord(that.imageDataURL, filename, position, title, link).subscribe(res => {
+      that.bannerService.uploadImageAndAddRecord(that.imageDataURL, filename, position, title, subtitle, link, textat).subscribe(res => {
         if (!res.error) {
           that.banner.banner = res.data;
           that.snackbar.open(`${res.data} uploaded Successfully.`, '', { duration: 3000 });
-          that.router.navigate(['/banners']);
+          that.router.navigate(['/banner']);
         } else {
           that.snackbar.open(`${res.error}`, '', { duration: 3000 });
         }

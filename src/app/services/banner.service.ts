@@ -43,19 +43,22 @@ export class BannerService {
       }));
   }
 
-  uploadImageAndAddRecord(dataurl: string | ArrayBuffer, filename: string, position: string, title: string, link: string) {
-    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/uploadbanner`,
-    {myFile: dataurl, filename: filename, secret: 'SudeepsSecret', position: position, title: title, link: link})
+  uploadImageAndAddRecord(dataurl: string | ArrayBuffer, filename: string, position: string, title: string,
+    subtitle: string, link: string, textat: string) {
+    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/banner/uploadbanner`,
+    {myFile: dataurl, filename: filename, secret: 'SudeepsSecret', position: position, title: title,
+    subtitle: subtitle, link: link, textat: textat})
     .pipe(map(res => {
       return res;
     }));
   }
 
   reorderBanners(banners: Banner[]) {
-    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/reorder`,
-    { banners: banners })
-    .pipe(map(res => {
-      return res;
-    }));
+    return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/banner/reorder`, { banners})
+      .pipe(map(res => {
+        console.log(res);
+        return res;
+      }));
   }
+
 }

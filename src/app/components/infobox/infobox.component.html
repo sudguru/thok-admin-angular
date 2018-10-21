@@ -1,0 +1,18 @@
+<app-header [headerData]="headerData"></app-header>
+<button mat-fab color="primary" class="fabbtn" (click)="addEdit(newInfobox)">
+  <mat-icon>add</mat-icon>
+</button>
+<div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
+    <div fxFlex="50%" fxFlex.lt-md="100%">
+        <mat-list dense>
+            <ng-container *ngFor="let infobox of infoboxes">
+                <mat-list-item (click)="addEdit(infobox)" style="cursor:default">
+                    <mat-icon matListIcon>info</mat-icon>
+                    <h3 matLine> {{infobox.title}} </h3>
+                </mat-list-item>
+            </ng-container>
+        </mat-list>
+    
+    </div>
+   
+</div>

@@ -9,7 +9,7 @@ export class DashboardComponent implements OnInit {
   headerData: any = {
     title: 'Dashboard',
     backBtn: false,
-    edit: true
+    edit: false
   };
   constructor() { }
 

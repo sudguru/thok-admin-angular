@@ -1,0 +1,7 @@
+@import 'https://use.fontawesome.com/releases/v5.4.1/css/solid.css';
+@import 'https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css';
+
+.icon-holder{
+    float: left;
+    padding: 15px
+}

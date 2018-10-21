@@ -7,6 +7,10 @@ import 'hammerjs';
 
 if (environment.production) {
   enableProdMode();
+  //remove console.log from production build
+  if(window){
+    window.console.log=function(){};
+  }
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)

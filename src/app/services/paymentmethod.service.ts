@@ -31,11 +31,13 @@ export class PaymentmethodService {
     if (paymentmethod.id === 0) {
       return this.http.post<ServerResponse>(`${environment.apiUrl}/admin/paymentmethod`, {paymentmethod})
         .pipe(map(res => {
+          console.log('i', res);
           return res;
         }));
     } else {
       return this.http.put<ServerResponse>(`${environment.apiUrl}/admin/paymentmethod`, {paymentmethod})
         .pipe(map(res => {
+          console.log('u', res);
           return res;
         }));
     }

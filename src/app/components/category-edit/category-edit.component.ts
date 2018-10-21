@@ -11,6 +11,7 @@ import { environment } from './../../../environments/environment';
   styleUrls: ['./category-edit.component.css']
 })
 export class CategoryEditComponent implements OnInit {
+  none = 0;
   category: Category;
   rootCategories: Category[];
   headerData: any = {
@@ -18,7 +19,7 @@ export class CategoryEditComponent implements OnInit {
     backBtn: true,
     edit: true
   };
-  imagePath = `${environment.apiUrl}/uploads/`;
+  imagePath = `${environment.apiUrl}/uploads/categorybanners/`;
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
@@ -36,7 +37,7 @@ export class CategoryEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoryService.getRootCategories().subscribe(res => this.rootCategories = res);
+    this.categoryService.getRootCategories().subscribe(res => this.rootCategories = res.filter(r => r.id !== this.category.id));
   }
 
   saveCategory(category: Category) {
@@ -44,7 +45,7 @@ export class CategoryEditComponent implements OnInit {
       console.log('save', res);
       if (!res.error) {
         this.snackbar.open(`${category.category} Saved.`, '', { duration: 3000 });
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/category']);
       } else {
         this.snackbar.open(`Record could not be Saved !! `, '', { duration: 3000 });
       }
@@ -55,7 +56,7 @@ export class CategoryEditComponent implements OnInit {
     this.categoryService.deleteCategory(category).subscribe(res => {
       if (!res.error) {
         this.snackbar.open(`${res.data} record(s) Deleted.`, '', { duration: 3000 });
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/category']);
       } else {
         this.snackbar.open(`Record could not be Deleted !! `, '', { duration: 3000 });
       }

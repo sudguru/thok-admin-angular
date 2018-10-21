@@ -1,10 +1,13 @@
 <mat-toolbar color="accent" fxLayout="row" fxLayoutAlign="space-bewteen center" style="height: 50px;">
 
   <span fxFlex fxLaout="row" fxLayoutAlign="start center">
-    <button *ngIf="headerData.backBtn" mat-icon-button (click)="_location.back()" style="margin-right: 30px">
+    <button mat-icon-button (click)="sidenavtoggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button *ngIf="headerData.backBtn" mat-icon-button (click)="_location.back()" style="margin-right: 5px">
       <mat-icon aria-label="Example icon-button with a heart icon">arrow_back</mat-icon>
     </button>
-    <mat-icon style="margin: 0 10px 0 0">nfc</mat-icon>
+    <!-- <mat-icon style="margin: 0 10px 0 0">nfc</mat-icon> -->
     <span style="font-weight: 400; font-size: 18px;" fxShow fxHide.xs="true">Thoksaman Admin</span>
   </span>
 
@@ -16,8 +19,6 @@
       <button *ngIf="headerData.edit" mat-icon-button (click)="deleteClicked()">
           <mat-icon>delete_outline</mat-icon>
         </button>
-    <button mat-icon-button (click)="sidenavtoggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
+
   </span>
 </mat-toolbar>

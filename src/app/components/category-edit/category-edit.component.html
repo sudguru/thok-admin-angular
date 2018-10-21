@@ -15,7 +15,7 @@
 
             <mat-form-field class="full-width" *ngIf="rootCategories">
                 <mat-select [(value)]="category.parent_id" placeholder="Select Parent Category">
-                  <mat-option value="0">None</mat-option>
+                  <mat-option [value]="none">None</mat-option>
                   <mat-option *ngFor="let cat of rootCategories" [value]="cat.id">{{cat.category}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -26,7 +26,7 @@
         </form>
 
         <div style="margin-top: 30px" *ngIf="category.id > 0">
-            <button mat-button (click)="chooseFile()" [disabled]="catForm.invalid" color="warn">Category Banner (Change)</button>
+            <button mat-button (click)="chooseFile()" [disabled]="catForm.invalid" color="warn">Category Banner (Change) {{ category.banner }}</button>
             <img *ngIf="!category.banner" src="./assets/nobanner.jpg" style="width: 100%">
             <img *ngIf="category.banner" [src]="imagePath+category.banner" style="width: 100%">
         </div>

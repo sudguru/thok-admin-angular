@@ -37,9 +37,10 @@ export class LoginComponent implements OnInit {
 
     let tempUrl;
     if (this.route.snapshot.queryParams['returnUrl']) {
+      console.log(this.route.snapshot.queryParams['returnUrl']);
       tempUrl = '/' + this.route.snapshot.queryParams['returnUrl'].split('/')[1];
     }
-
+    console.log(tempUrl);
     this.returnUrl = tempUrl || '/';
     this.dataService.changeData(false);
   }

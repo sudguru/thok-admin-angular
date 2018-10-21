@@ -33,6 +33,10 @@ import { ListComponent } from './components/list/list.component';
 import { OutletComponent } from './components/outlet/outlet.component';
 import { OutletEditComponent } from './components/outlet-edit/outlet-edit.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { InfoboxComponent } from './components/infobox/infobox.component';
+import { InfoboxEditComponent } from './components/infobox-edit/infobox-edit.component';
+import { MessageComponent } from './components/message/message.component';
+import { MessageEditComponent } from './components/message-edit/message-edit.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,10 @@ import { AlertComponent } from './components/alert/alert.component';
     OutletComponent,
     OutletEditComponent,
     AlertComponent,
+    InfoboxComponent,
+    InfoboxEditComponent,
+    MessageComponent,
+    MessageEditComponent,
   ],
   imports: [
     BrowserModule,

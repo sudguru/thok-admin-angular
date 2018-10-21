@@ -3,11 +3,12 @@
   <mat-icon>add</mat-icon>
 </button>
 <div fxLayout="row" fxLayoutAlign="center" style="height: calc(100% - 50px);" style="padding: 15px">
-    <div fxFlex="50%" fxFlex.lt-md="100%">
+    <div fxFlex="60%" fxFlex.lt-md="100%">
         <h3>Home Main Banners</h3>
         <div [sortablejs]="homeMains" [sortablejsOptions]="optionsHome">
-            <div *ngFor="let banner of homeMains" style="float: left; margin-right: 25px; text-align: right">
-                <img [src]="'http://localhost:8080/uploads/banner/'+banner.banner" style="width: 200px; height: 200px" />
+            <div *ngFor="let banner of homeMains" style="float: left; margin-right: 25px; text-align: center">
+                <!-- <img [src]="imagePath+banner.banner" style="width: 200px; height: 200px" /> -->
+                <div  class="image-container" [ngStyle]="{'background-image': 'url(' + imagePath+banner.banner + ')'}"></div>
                 <br/>
                 <button mat-icon-button (click)="addEdit(banner)" style="margin: 0 auto"><mat-icon>edit</mat-icon></button>
             </div>
@@ -16,7 +17,8 @@
         <h3>Home Sub Banners</h3>
         <div [sortablejs]="homeSubMains" [sortablejsOptions]="optionsHomeSub">
             <div *ngFor="let banner of homeSubMains" style="float: left; margin-right: 25px; text-align: center">
-                <img [src]="'http://localhost:8080/uploads/banner/'+banner.banner" style="width: 200px; height: 200px" />
+                <!-- <img [src]="imagePath+banner.banner" style="width: 200px; height: 200px" /> -->
+                <div  class="image-container" [ngStyle]="{'background-image': 'url(' + imagePath+banner.banner + ')'}"></div>
                 <br/>
                 <button mat-icon-button (click)="addEdit(banner)" style="margin: 0 auto"><mat-icon>edit</mat-icon></button>
             </div>

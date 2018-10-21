@@ -43,6 +43,7 @@ export class CategoryComponent implements OnInit {
   }
 
   list_to_tree(list) {
+    console.log(list);
     const map = {}, roots = [];
     let node, i;
     for (i = 0; i < list.length; i += 1) {
@@ -51,7 +52,7 @@ export class CategoryComponent implements OnInit {
     }
     for (i = 0; i < list.length; i += 1) {
         node = list[i];
-        if (node.parent_id !== '0') {
+        if (node.parent_id !== 0) {
             // if you have dangling branches check that map[node.parentId] exists
             list[map[node.parent_id]].children.push(node);
         } else {

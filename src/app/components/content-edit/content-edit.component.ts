@@ -35,6 +35,7 @@ export class ContentEditComponent implements OnInit {
     ) {
     this.content = JSON.parse(this.route.snapshot.paramMap.get('content'));
     this.content.content = this.rhtmlspecialchars(this.content.content );
+    console.log(this.content.content);
     if (this.content.id === 0) {
       this.headerData.title = `Add New Content`;
       this.headerData.edit = false;
